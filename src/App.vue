@@ -32,6 +32,22 @@
       </form>
     </div>
   </div>
+
+  <hr>
+
+  <div>
+    <div>
+      <!-- v-on:submit.prevent = reload 안되게 막음 -->
+      <form v-on:submit.prevent="submit"> 
+        <!-- <input type="text" :value="text" @keyup="updateText"> -->
+        <input type="text" v-model="text" >
+        <br>
+        {{ text }}
+        <br>
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -45,7 +61,8 @@ export default {
       inputValue: 'hello',
       inputType: 'text',
       aLink: 'https://www.youtube.com/',
-      year: 2018
+      year: 2018,
+      text: 'text'
     }
   },
   methods: {
@@ -73,7 +90,11 @@ export default {
     submit() {
       alert("submitted");
       console.log('hello');
-    }
+    },
+    // updateText(event) {
+    //   // console.log(event);
+    //   this.text = event.target.value;
+    // }
   }
 }
 </script>
