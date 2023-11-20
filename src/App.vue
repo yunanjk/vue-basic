@@ -70,6 +70,14 @@
     <br>
     {{ updated }}
   </div>
+
+  <hr>
+
+  <div>
+    <div :class="{ red: isRed, bold: isBold }">Hello</div>
+    <button @click="update">click</button>
+    <div :style="{ color: blue, fontSize: size }">Hello</div>
+  </div>
 </template>
 
 <script>
@@ -86,7 +94,11 @@ export default {
       year: 2018,
       text: 'text',
       message: 'hello',
-      updated: '아니오'
+      updated: '아니오',
+      isRed: false,
+      isBold: false,
+      blue: 'blue',
+      size: '30px'
     }
   },
   methods: {
@@ -121,6 +133,10 @@ export default {
     // }
     changeMessage() {
       this.message = 'bye';
+    },
+    update() {
+      this.isRed = !this.isRed;
+      this.isBold = !this.isBold;
     }
   },
   computed: {
@@ -146,5 +162,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.red {
+  color: red;
+}
+.bold {
+  font-weight: bold;
 }
 </style>
