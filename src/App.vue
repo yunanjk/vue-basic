@@ -48,6 +48,18 @@
       </form>
     </div>
   </div>
+
+  <hr>
+
+  <div>
+    {{ message }}
+    <br>
+    {{ message.split('').reverse().join('') }}
+    <br>
+    {{ reversedMessage }}
+    <br>
+    <button @click="changeMessage">click</button>
+  </div>
 </template>
 
 <script>
@@ -62,7 +74,8 @@ export default {
       inputType: 'text',
       aLink: 'https://www.youtube.com/',
       year: 2018,
-      text: 'text'
+      text: 'text',
+      message: '헬로우'
     }
   },
   methods: {
@@ -95,6 +108,14 @@ export default {
     //   // console.log(event);
     //   this.text = event.target.value;
     // }
+    changeMessage() {
+      this.message = '코지코더';
+    }
+  },
+  computed: {
+    reversedMessage() {
+      return this.message.split('').reverse().join('');
+    }
   }
 }
 </script>
