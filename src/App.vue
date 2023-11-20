@@ -17,7 +17,7 @@
 
   <div>
     <p>
-      <button v-on:click="alert">Click me</button>
+      <button v-on:click="alert">click me</button>
     </p>
     <p>
       {{ year }}
@@ -78,6 +78,29 @@
     <button @click="update">click</button>
     <div :style="{ color: blue, fontSize: size }">Hello</div>
   </div>
+
+  <hr>
+
+  <div>
+    <div v-if="show">yes</div>
+    <div v-else>no</div>
+    <button @click="toggleShow">toggle</button>
+    <template v-if="show">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </template>
+    <div v-else>4</div>
+    <br>
+    <div v-if="number === 1">1</div>
+    <div v-else-if="number === 2">2</div>
+    <div v-else>1, 2 둘 다 아님</div>
+    <button @click="increaseNumber">increase</button> 
+    <div>{{ 'number : ' + number }}</div>
+    <br>
+    <div v-show="show">yes</div>
+    <button @click="toggleShow">toggle</button>
+  </div>
 </template>
 
 <script>
@@ -98,7 +121,9 @@ export default {
       isRed: false,
       isBold: false,
       blue: 'blue',
-      size: '30px'
+      size: '30px',
+      show: false,
+      number: 1
     }
   },
   methods: {
@@ -137,6 +162,12 @@ export default {
     update() {
       this.isRed = !this.isRed;
       this.isBold = !this.isBold;
+    },
+    toggleShow() {
+      this.show = !this.show;
+    },
+    increaseNumber() {
+      this.number++;
     }
   },
   computed: {
@@ -161,7 +192,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 .red {
   color: red;
