@@ -101,6 +101,16 @@
     <div v-show="show">yes</div>
     <button @click="toggleShow">toggle</button>
   </div>
+
+  <hr>
+
+  <div>
+    <div>{{ people[0].name }} {{ people[0].age }}</div>
+    <div>{{ people[1].name }} {{ people[1].age }}</div>
+    <div>{{ people[2].name }} {{ people[2].age }}</div>
+    <br>
+    <div v-for="(p, index) in people" :key="index">{{ p.name }} {{ p.age }}</div>
+  </div>
 </template>
 
 <script>
@@ -123,7 +133,13 @@ export default {
       blue: 'blue',
       size: '30px',
       show: false,
-      number: 1
+      number: 1,
+      people: [
+        { name: 'a', age: 20 },
+        { name: 'b', age: 21 },
+        { name: 'c', age: 22 },
+        { name: 'd', age: 23 }
+      ]
     }
   },
   methods: {
