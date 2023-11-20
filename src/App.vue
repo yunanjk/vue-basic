@@ -60,6 +60,16 @@
     <br>
     <button @click="changeMessage">click</button>
   </div>
+
+  <hr>
+
+  <div>
+    {{ message }}
+    <br>
+    <button @click="changeMessage">click</button>
+    <br>
+    {{ updated }}
+  </div>
 </template>
 
 <script>
@@ -75,7 +85,8 @@ export default {
       aLink: 'https://www.youtube.com/',
       year: 2018,
       text: 'text',
-      message: '헬로우'
+      message: 'hello',
+      updated: '아니오'
     }
   },
   methods: {
@@ -109,12 +120,19 @@ export default {
     //   this.text = event.target.value;
     // }
     changeMessage() {
-      this.message = '코지코더';
+      this.message = 'bye';
     }
   },
   computed: {
     reversedMessage() {
       return this.message.split('').reverse().join('');
+    }
+  },
+  watch: {
+    message(newVal, oldVal) {
+      console.log('newVal : ' + newVal);
+      console.log('oldVal : ' + oldVal);
+      this.updated = '네';
     }
   }
 }
