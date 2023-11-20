@@ -111,9 +111,17 @@
     <br>
     <div v-for="(p, index) in people" :key="index">{{ p.name }} {{ p.age }}</div>
   </div>
+
+  <hr>
+
+  <div>
+    <ChildComp/>
+  </div>
 </template>
 
 <script>
+import ChildComp from './components/ChildComp.vue';
+
 export default {
   name: 'App',
   data() {
@@ -197,6 +205,9 @@ export default {
       console.log('oldVal : ' + oldVal);
       this.updated = '네';
     }
+  },
+  components: {
+    ChildComp
   }
 }
 </script>
